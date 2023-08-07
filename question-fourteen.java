@@ -1,0 +1,93 @@
+/*
+
+Write code in the Customer class of Customer.java to do the following:
+Create a Grocery ArrayList. 
+Define a method named getGroceryList that returns the Grocery ArrayList.
+Use the method signature public ArrayList<Grocery> getGroceryList()
+Define a method named addGrocery with a Grocery parameter variable.
+The addGrocery method should add a Grocery object to the Grocery ArrayList via the parameter.
+Use the method signature public void addGrocery(Grocery grocery)
+If the input is:
+ 
+John
+Eggs
+5.99
+12
+y
+Oatmeal
+8.99
+1
+n
+ 
+the output when "John" is the name of the customer, "Eggs" are a grocery item, 5.99 is the price, 12 is the quantity, "y" is a value indicating "yes" to enter more items, "Oatmeal" is another grocery item, 8.99 is the price, 1 is the quantity, and "n" is a value indicating "no" to stop entering more items is:
+ 
+John has the following items:
+ 
+Item: Eggs
+Price: 5.99
+Quantity: 12
+ 
+Item: Oatmeal
+Price: 8.99
+Quantity: 1
+ 
+Total: 14.98
+*/
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Customer {
+    private String name;
+    private ArrayList<Grocery> groceryList;
+
+    public Customer(String name) {
+        this.name = name;
+        groceryList = new ArrayList<>();
+    }
+
+    public ArrayList<Grocery> getGroceryList() {
+        return groceryList;
+    }
+
+    public void addGrocery(Grocery grocery) {
+        groceryList.add(grocery);
+    }
+
+    public void printGroceryList() {
+        System.out.println(name + " has the following items:\n");
+        double total = 0.0;
+
+        for (Grocery grocery : groceryList) {
+            System.out.println("Item: " + grocery.getItem());
+            System.out.println("Price: " + grocery.getPrice());
+            System.out.println("Quantity: " + grocery.getQuantity() + "\n");
+            total += grocery.getPrice() * grocery.getQuantity();
+        }
+
+        System.out.println("Total: " + total);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String name = scanner.nextLine();
+        Customer customer = new Customer(name);
+
+        while (true) {
+            String item = scanner.nextLine();
+            double price = Double.parseDouble(scanner.nextLine());
+            int quantity = Integer.parseInt(scanner.nextLine());
+
+            Grocery grocery = new Grocery(item, price, quantity);
+            customer.addGrocery(grocery);
+
+            String moreItems = scanner.nextLine();
+            if (moreItems.equals("n")) {
+                break;
+            }
+        }
+
+        customer.printGroceryList();
+        scanner.close();
+    }
+}
