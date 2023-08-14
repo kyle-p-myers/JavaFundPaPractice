@@ -47,9 +47,13 @@ public class DivisibleByThree {
       int digitTwo = scnr.nextInt();
       int digitThree = scnr.nextInt();
       
-      if(digitOne < 0 || digitTwo < 0 || digitThree < 0){
-         System.out.println("Invalid Input!");
-         }else if((digitOne + digitTwo + digitThree) % 3 == 0){
+     if (digit1 < 0 || digit2 < 0 || digit3 < 0) {
+            System.out.println("Invalid input!");
+        } else {
+            int sum = digit1 + digit2 + digit3;
+     }
+         
+      if((digitOne + digitTwo + digitThree) % 3 == 0){
          System.out.printf("%d%d%d is divisibile by 3!", digitOne, digitTwo, digitThree);
          System.out.println();
          }else{
