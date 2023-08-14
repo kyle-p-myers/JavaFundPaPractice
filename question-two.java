@@ -28,9 +28,28 @@ public static void main(String []args) {
     System.out.println(result);
     
 
+/* 8/14 attempt */
 
+import java.util.Scanner;
 
+public class LabProgram {
+   public static void main(String[] args) {
+      Scanner scnr = new Scanner(System.in); 
+      /* Type your code here. */
+         int starting_num = scnr.nextInt(); 
+    int multiplier = scnr.nextInt(); 
 
+    int result = starting_num * multiplier; 
+    
+    System.out.print(result + " ");
+    
+    result *= multiplier; 
+    System.out.print(result + " ");
+    
+    result *= multiplier; 
+    System.out.println(result + " ");
+   }
+}
 
 
 
